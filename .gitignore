@@ -1,3 +1,4 @@
 /bin/
 /src/resources/files
 *.jar
+.classpath
