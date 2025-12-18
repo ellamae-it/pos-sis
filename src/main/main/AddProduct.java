@@ -154,20 +154,24 @@ public class AddProduct extends JFrame {
 	}
 	
 	public void add_product(UserAccount user) {
-	
-		int user_id = user.getUserId();
-		String prod_name = tf_prod_name.getText();
-		double prod_price = Double.valueOf(tf_prod_price.getText());
-		int prod_stock = Integer.valueOf(tf_prod_stock.getText());
 		
 		try {
 			dbCon.connect();
 			dbCon.con.setAutoCommit(false);
 			
-			if (prod_name.isEmpty() || prod_price == 0 ) {
-			    JOptionPane.showMessageDialog(null, "Product Name and Product Price are required! Please fill in the missing information.");
+			int user_id = user.getUserId();
+			String prod_name = tf_prod_name.getText();
+			String price_text = tf_prod_price.getText();
+			String stock_text = tf_prod_stock.getText();		
+			
+			
+			if (prod_name.isEmpty() || price_text.isEmpty() || stock_text.isEmpty() ) {
+			    JOptionPane.showMessageDialog(this, "All fields are required! Please fill in the missing information.");
 			    return; 
 			}
+			
+			double prod_price = Double.valueOf(tf_prod_price.getText());
+			int prod_stock = Integer.valueOf(tf_prod_stock.getText());
 			
 			String query = "INSERT INTO products(product_name, product_price, product_stocks, fk_products_user_id)"
 							+"VALUES(?,?,?,?)";
@@ -215,8 +219,11 @@ public class AddProduct extends JFrame {
 			}
 			
 		}catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("error: " + user_id);
+//			e.printStackTrace();
+			JOptionPane.showMessageDialog(this,
+	                "Please enter a value!",
+	                "Invalid Input",
+	                JOptionPane.ERROR_MESSAGE);
 		}
 		
 		
