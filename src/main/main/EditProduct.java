@@ -238,7 +238,7 @@ public class EditProduct extends JFrame {
 			
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(this,
-	                "Please enter a value!",
+	                "Input Required!",
 	                "Invalid Input",
 	                JOptionPane.ERROR_MESSAGE);
 		}

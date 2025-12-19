@@ -152,7 +152,7 @@ public class Accounts extends JFrame {
             int result = prep.executeUpdate();
 
             if (result > 0) {
-                JOptionPane.showMessageDialog(null, "Status updated successfully!");
+                JOptionPane.showMessageDialog(this, "Status updated successfully!");
                 
                 for (int i = 0; i < tableModel.getRowCount(); i++) {
                     int idInTable = (int) tableModel.getValueAt(i, 0);

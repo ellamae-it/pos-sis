@@ -127,6 +127,11 @@ public class Login extends JFrame {
 		String password = String.valueOf(passwordField.getPassword());
 		user.setEmail(email);
 		
+		if(email.isEmpty()&& password.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "All fields are required", "Login error", JOptionPane.ERROR_MESSAGE);
+            return;
+		}
+		
 		try {
 			dbCon.connect();
 			String select = "SELECT * FROM users WHERE email = ?";
@@ -143,6 +148,7 @@ public class Login extends JFrame {
 				user.setUsertype(result.getString("usertype"));
 				user.setUserId(result.getInt("user_id"));
 				user.setStatus(result.getString("status"));
+				
 				
 				
 				if(email.equals(user.getEmail())&&(password.equals(user.getPassword()))) {

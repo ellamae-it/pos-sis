@@ -101,6 +101,7 @@ public class CashierDashboard extends JFrame {
 
         JButton btnLogout = new JButton("Logout");
         btnLogout.setForeground(Color.WHITE);
+        btnLogout.setFocusable(false);
         btnLogout.setBackground(new Color(178, 34, 34));
         btnLogout.addActionListener(e -> logout());
         
